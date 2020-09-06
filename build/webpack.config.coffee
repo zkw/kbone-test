@@ -1,23 +1,44 @@
 path = require('path')
 webpack = require('webpack')
-VueLoaderPlugin = require('vue-loader').VueLoaderPlugin
+VueLoaderPlugin = require('vue-loader/lib/plugin')
+VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 HtmlWebpackPlugin = require('html-webpack-plugin')
 
-loaderVue = 
-  test: /\.vue$/
-  loader: 'vue-loader'
-
-loaderPug = 
+loaderPug =
   test: /\.pug$/
   loader: 'pug-plain-loader'
 
-loaderCoffee = 
+loaderCoffee =
   test: /\.coffee$/
   loader: 'coffee-loader'
 
-loaderStylus = 
+loaderSass =
+  test: /\.s?(c|a)ss$/,
+  use: [
+    'style-loader'
+    'css-loader'
+    {
+      loader: 'sass-loader'
+      options: {
+        implementation: require('sass')
+        sassOptions: {
+          fiber: require('fibers')
+        }
+      }
+    }
+  ]
+
+loaderStylus =
   test: /\.styl(us)?$/
-  loader: 'vue-style-loader!css-loader!stylus-loader'
+  use: [
+    'style-loader'
+    'css-loader'
+    'stylus-loader'
+  ]
+
+loaderVue =
+  test: /\.vue$/
+  loader: 'vue-loader'
 
 module.exports = {
   context: path.resolve(__dirname, '../')
@@ -27,9 +48,16 @@ module.exports = {
     filename: '[name].js'
     publicPath: '/'
   target: 'web'
-  module: rules: [ loaderVue, loaderPug, loaderCoffee, loaderStylus ]
+  module: rules: [
+    loaderPug
+    loaderCoffee
+    loaderSass
+    loaderStylus
+    loaderVue
+  ]
   plugins: [
     new VueLoaderPlugin
+    new VuetifyLoaderPlugin
     new HtmlWebpackPlugin(
       filename: 'index.html'
       title: '标题'

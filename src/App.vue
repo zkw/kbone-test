@@ -1,13 +1,9 @@
-<template>
-  <div id="app">
-    <router-view/>
-  </div>
+<template lang="pug">
+  v-app#app
+    router-view
 </template>
 
-<script>
+<script lang="coffee">
 import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'App',
-})
+export default { name: 'App' }
 </script>
