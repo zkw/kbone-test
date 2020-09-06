@@ -4,7 +4,7 @@ MpPlugin = require('mp-webpack-plugin')
 MpPluginConfig = require('./miniprogram.config.coffee')
 base = require('./webpack.config.coffee')
 
-base.entry.home = path.resolve(__dirname, '../src/main.mp.js')
+base.entry.home = path.resolve(__dirname, '../src/main.mp.coffee')
 base.output = 
     path: path.resolve(__dirname, '../dist/mp/common')
     filename: '[name].js'
