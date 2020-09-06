@@ -1,14 +1,12 @@
 {
-  "name": "vue-kbone",
+  "name": "kbone-test",
   "version": "0.0.1",
   "description": "",
-  "author": "wechat-miniprogram",
+  "author": "Kunwei Zhang",
   "scripts": {
-    "web": "cross-env NODE_ENV=development webpack-dev-server --inline --progress --config build/webpack.dev.config.js",
-    "mp": "rimraf dist/mp/common && cross-env NODE_ENV=development webpack --config build/webpack.mp.config.js --progress --hide-modules",
-    "lint": "eslint --ext .js,.vue src --fix",
-    "build": "rimraf dist/web && cross-env NODE_ENV=production webpack --config build/webpack.prod.config.js --progress --hide-modules",
-    "build:mp": "rimraf dist/mp/common && cross-env NODE_ENV=production webpack --config build/webpack.mp.config.js --progress --hide-modules"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode=development --hot --inline --progress --config build/webpack.config.coffee",
+    "build": "rimraf dist/web && cross-env NODE_ENV=production webpack --mode=production --progress --config build/webpack.config.coffee",
+    "build:mp": "rimraf dist/mp/common && cross-env NODE_ENV=production webpack --mode=production --progress --config build/webpack.mp.config.coffee"
   },
   "dependencies": {
     "vue": "^2.6.11",
@@ -17,54 +15,23 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "autoprefixer": "^9.8.6",
-    "babel-loader": "^8.1.0",
+    "coffee-loader": "^1.0.0",
+    "coffeescript": "^2.5.1",
     "cross-env": "^7.0.2",
     "css-loader": "^4.2.2",
-    "cssnano": "^4.1.10",
-    "eslint": "^7.8.1",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-friendly-formatter": "^4.0.1",
-    "eslint-import-resolver-webpack": "^0.12.2",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-vue": "^6.2.2",
     "file-loader": "^6.1.0",
-    "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^4.4.1",
-    "less": "^3.10.3",
-    "less-loader": "^7.0.1",
     "mini-css-extract-plugin": "^0.11.0",
     "mp-webpack-plugin": "latest",
-    "node-notifier": "^8.0.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "portfinder": "^1.0.25",
-    "postcss-loader": "^3.0.0",
-    "reduce-loader": "^0.3.1",
     "rimraf": "^3.0.2",
-    "terser-webpack-plugin": "^4.1.0",
-    "thread-loader": "^2.1.3",
-    "ts-loader": "^8.0.3",
-    "typescript": "^4.0.2",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^3.0.2",
     "url-loader": "^4.1.0",
-    "vue-improve-loader": "^0.3.5",
     "vue-loader": "^15.7.2",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0",
-    "webpack-merge": "^5.1.3"
-  },
-  "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "webpack-dev-server": "^3.9.0"
+  }
 }

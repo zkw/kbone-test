@@ -1,45 +1,19 @@
 <template>
   <div class="cnt">
-    <Header></Header>
     <div>
       <a href="/test/list/321">当前页跳转</a>
       <a href="/test/detail/123" target="_blank">新开页面跳转</a>
       <button @click="onClickJump">当前页跳转</button>
       <button @click="onClickOpen">新开页面跳转</button>
     </div>
-    <!-- vue-improve-loader -->
-    <div check-reduce>
-      <p>这段话不会在小程序里显示</p>
-      <p>在构建的时候就会被 vue-improve-loader 给干掉了</p>
-    </div>
-    <!-- reduce-loader -->
-    <Web>
-      <p>这段话也不会在小程序里显示</p>
-      <p>在构建的时候就会被 reduce-loader 给干掉了</p>
-    </Web>
-    <!-- 样式隐藏 -->
-    <div class="for-web">
-      <p>这段话也不会在小程序里显示</p>
-      <p>在渲染时会被样式隐藏</p>
-    </div>
-    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import Web from 'reduce-loader!../common/Web.vue'
-import Header from '../common/Header.vue'
-import Footer from '../common/Footer.vue'
-import 'reduce-loader!./web'
 
 export default Vue.extend({
   name: 'Home',
-  components: {
-    Header,
-    Footer,
-    Web,
-  },
   created() {
     window.addEventListener('wxload', (query) => console.log('page1 wxload', query))
     window.addEventListener('wxshow', () => console.log('page1 wxshow'))
@@ -65,11 +39,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="less">
-.cnt {
-  margin-top: 20px;
-}
-
+<style lang="stylus">
 a, button {
   display: block;
   width: 100%;
@@ -78,11 +48,5 @@ a, button {
   text-align: center;
   font-size: 20px;
   border: 1px solid #ddd;
-}
-
-.miniprogram-root {
-  .for-web {
-    display: none;
-  }
 }
 </style>
